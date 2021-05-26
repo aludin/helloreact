@@ -1,23 +1,32 @@
 import React from 'react';
 import "./Lien.css";
 
-type ParametresLiens = {
+type LienAvecTexte = {
     lien: string;
     texte: string;
 }
 
+type ParametresLiens = {
+    liensAvecTexte: Array<LienAvecTexte>;
+}
+
 const Lien = (props: ParametresLiens) => {
-    const { lien, texte } = props;
+    const { liensAvecTexte } = props;
     return (
-        <a
-            className="App-link"
-            href={lien}
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            {texte}
-        </a>
-    )
+        <>{
+            liensAvecTexte.map((valeur) => {
+                return <a
+                    className="App-link"
+                    href={valeur.lien}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    {valeur.texte}
+                </a>
+            })}
+        </>
+    );
+
 }
 
 export default Lien;
